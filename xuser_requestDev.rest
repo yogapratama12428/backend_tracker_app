@@ -1,4 +1,4 @@
-GET http://localhost:3000/device
+GET https://pink-relieved-calf.cyclic.app/user
 
 ### GET USER BY ID 
 GET http://localhost:3000/user/657ffb4b18c8219214e21586
