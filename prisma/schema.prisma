@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+model User {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  email String @unique
+
+  devices Device[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Device { 
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  isLock Boolean?
+
+  userId String? @db.ObjectId
+  user User? @relation(fields: [userId], references: [id])
+
+  locations Location[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model Location {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  latitude Float?
+  longitude Float?
+
+  deviceId String? @db.ObjectId
+  device Device? @relation(fields: [deviceId], references: [id])
+
+  createdAt DateTime @default(now())
+}

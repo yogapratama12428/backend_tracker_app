@@ -1,0 +1,21 @@
+GET http://localhost:3000/device
+
+### GET USER BY ID 
+GET http://localhost:3000/user/657ffb4b18c8219214e21586
+### CREATE USER
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+    "email": "yoga.pratama.pangest2u@gmail.com"
+
+}
+### EDIT USER
+PUT http://localhost:3000/user/657bcb2db4702828d9dd77f4
+Content-Type: application/json
+
+{
+    "email": "yoga.pratama.pangest2u",
+}
+### DELETE USER
+DELETE http://localhost:3000/user/657bfb73f75b89b7c4ba5f59
