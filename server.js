@@ -69,6 +69,6 @@ app.use(locationRoute);
 
 app.listen(port || 3000, () => {
   console.log("listening on port 3000");
-  mqttConnect();
-  mqttReceiveMessage();
+  // mqttConnect();
+  // mqttReceiveMessage();
 });
