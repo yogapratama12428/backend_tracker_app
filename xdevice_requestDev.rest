@@ -1,14 +1,15 @@
+###
 GET http://localhost:3000/device
 
 ### GET DEVICE BY ID 
-GET http://localhost:3000/device/657ffb6418c8219214e21588
+GET http://localhost:3000/device/65c198c707d3a8e9838cb649
 ###
 POST http://localhost:3000/device
 Content-Type: application/json
 
 {
     "name": "Motor Teman",
-    "userId": "657ffb4b18c8219214e21586",
+    "userId": "65c1987907d3a8e9838cb648",
     "isLock": true
 }
 ### EDIT DEVICE
