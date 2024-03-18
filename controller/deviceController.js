@@ -2,6 +2,19 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+const characters =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+function generateString(length) {
+  let result = " ";
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+
+  return result;
+}
+
 export const getDevice = async (req, res) => {
   try {
     const response = await prisma.device.findMany({});
@@ -32,29 +45,35 @@ export const getDeviceById = async (req, res) => {
 export const createDevice = async (req, res) => {
   const { name, isLock, userId } = req.body;
 
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-  function generateString(length) {
-    let result = ' ';
-    const charactersLength = characters.length;
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-
-    return result;
-  }
-
   try {
     const response = await prisma.device.create({
       data: {
         name,
         userId,
         isLock,
-        token: generateString(10)
+        token: generateString(10),
       },
     });
     res.status(201).json(response);
   } catch (e) {
+    res.status(401).json(e);
+  }
+};
+
+export const updateTokenDevice = async (req, res) => {
+  const { deviceId } = req.params;
+
+  try {
+    const response = await prisma.device.update({
+      where: {
+        deviceId,
+      },
+      data: {
+        token: generateString(10),
+      },
+    });
+    res.status(201).json(response);
+  } catch (error) {
     res.status(401).json(e);
   }
 };
@@ -72,7 +91,7 @@ export const editDevice = async (req, res) => {
         name,
         userId,
         isLock,
-        token
+        token,
       },
     });
     res.status(201).json(response);
