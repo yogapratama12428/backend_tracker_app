@@ -1,7 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 // import mqtt from "mqtt";
+import authRoute from './route/authRoute.js'
 import userRoute from "./route/userRoute.js";
 import deviceRoute from "./route/deviceRoute.js";
 import locationRoute from "./route/locationRoute.js";
@@ -11,6 +13,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 
+app.set("trust proxy", 1)
 // let client = mqtt.connect("ws://broker.emqx.io:8083/mqtt");
 // let client = mqtt.connect(
 //   `${process.env.MQTT_PROTOCOL}://${process.env.MQTT_HOST}:${process.env.MQTT_PORT}/mqtt`
@@ -61,8 +64,16 @@ const port = process.env.PORT;
 // };
 
 app.use(express.json());
-app.use(cors());
 
+app.use(cors({
+  origin: ["http://localhost:5173", "https://backend-tracker-app.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}));
+
+app.use(cookieParser())
+
+app.use(authRoute);
 app.use(userRoute);
 app.use(deviceRoute);
 app.use(locationRoute);

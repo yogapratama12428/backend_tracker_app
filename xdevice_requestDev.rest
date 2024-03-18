@@ -1,5 +1,5 @@
 ###
-GET http://localhost:3000/device
+GET http://localhost:3000/api/v1/device
 
 ### GET DEVICE BY ID 
 GET http://localhost:3000/device/65c198c707d3a8e9838cb649

@@ -6,13 +6,15 @@ import {
   editUser,
   deleteUser,
 } from "../controller/userController.js";
+import { isAdmin } from "../middleware/isAdmin.js";
+import { validationuser } from "../middleware/validationuser.js";
 
 const router = express.Router();
 
-router.get("/user", getUser);
-router.get("/user/:id", getUserById);
-router.post("/user", createUser);
-router.put("/user/:id", editUser);
-router.delete("/user/:id", deleteUser);
+router.get("/api/v1/user", isAdmin, getUser);
+router.get("/api/v1/user/:id", validationuser, getUserById);
+router.post("/api/v1/user", isAdmin, createUser);
+router.put("/api/v1/user/:id", isAdmin, editUser);
+router.delete("/api/v1/user/:id", isAdmin, deleteUser);
 
 export default router;

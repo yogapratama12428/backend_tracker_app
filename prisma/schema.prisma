@@ -2,9 +2,10 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "rhel-openssl-1.0.x"]
 }
+
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
@@ -14,9 +15,10 @@ datasource db {
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 model User {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  email String @unique
-  password String
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  email        String @unique
+  password     String
+  access_token String
 
   devices Device[]
 
@@ -24,13 +26,14 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
-model Device { 
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  name String
+model Device {
+  id     String   @id @default(auto()) @map("_id") @db.ObjectId
+  name   String
+  token  String   @unique @db.String
   isLock Boolean?
 
   userId String? @db.ObjectId
-  user User? @relation(fields: [userId], references: [id])
+  user   User?   @relation(fields: [userId], references: [id])
 
   locations Location[]
 
@@ -41,12 +44,12 @@ model Device {
 }
 
 model Location {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  latitude Float?
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  latitude  Float?
   longitude Float?
 
-  deviceId String? @db.ObjectId
-  device Device? @relation(fields: [deviceId], references: [id])
+  deviceId String? @db.String
+  device   Device? @relation(fields: [deviceId], references: [token])
 
   createdAt DateTime @default(now())
 }

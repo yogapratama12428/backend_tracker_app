@@ -1,17 +1,31 @@
 ###
-GET https://pink-relieved-calf.cyclic.app/user
-
-###
 GET https://backend-tracker-app.vercel.app/user
 ### GET USER BY ID 
 GET http://localhost:3000/user/65c1987907d3a8e9838cb648
-### CREATE USER
-POST http://localhost:3000/user
+
+### REGISTER USER
+POST http://localhost:3000/api/v1/register
 Content-Type: application/json
 
 {
-    "email": "yoga.pratama.pangest2u@gmail.com"
+    "email": "yoga.pratama.pangest2u@gmail.com",
+    "password": "yoga pratama"
 }
+
+### LOGIN USER
+POST http://localhost:3000/api/v1/login
+Content-Type: application/json
+
+{
+    "email": "yoga.pratama.pangest2u@gmail.com",
+    "password": "yoga pratama"
+}
+
+### LOGOUT USER
+POST http://localhost:3000/api/v1/logout
+Content-Type: application/json
+
+
 ### EDIT USER
 PUT http://localhost:3000/user/657bcb2db4702828d9dd77f4
 Content-Type: application/json

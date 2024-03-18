@@ -32,12 +32,25 @@ export const getDeviceById = async (req, res) => {
 export const createDevice = async (req, res) => {
   const { name, isLock, userId } = req.body;
 
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+  function generateString(length) {
+    let result = ' ';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+  }
+
   try {
     const response = await prisma.device.create({
       data: {
         name,
         userId,
         isLock,
+        token: generateString(10)
       },
     });
     res.status(201).json(response);
@@ -47,7 +60,7 @@ export const createDevice = async (req, res) => {
 };
 
 export const editDevice = async (req, res) => {
-  const { name, isLock, userId } = req.body;
+  const { name, isLock, userId, token } = req.body;
   const { id } = req.params;
 
   try {
@@ -59,6 +72,7 @@ export const editDevice = async (req, res) => {
         name,
         userId,
         isLock,
+        token
       },
     });
     res.status(201).json(response);

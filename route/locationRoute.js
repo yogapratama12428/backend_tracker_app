@@ -3,7 +3,7 @@ import { createLocation, getLocationById } from "../controller/locationControlle
 
 const router = express.Router()
 
-router.get('/location/:id', getLocationById )
-router.post('/location', createLocation )
+router.get('/api/v1/location/:id', getLocationById)
+router.post('/api/v1/location', createLocation)
 
 export default router
