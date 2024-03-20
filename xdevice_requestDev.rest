@@ -2,14 +2,14 @@
 GET http://localhost:3000/api/v1/device
 
 ### GET DEVICE BY ID 
-GET http://localhost:3000/device/65c198c707d3a8e9838cb649
+GET http://localhost:3000/api/v1/device/65fa41395c7050febf266843
 ###
-POST http://localhost:3000/device
+POST http://localhost:3000/api/v1/device
 Content-Type: application/json
 
 {
-    "name": "Motor Teman",
-    "userId": "65c1987907d3a8e9838cb648",
+    "name": "BP 2739 GM",
+    "userId": "65fa40ea6ee993de9bfbe138",
     "isLock": true
 }
 ### EDIT DEVICE
@@ -20,14 +20,14 @@ Content-Type: application/json
     "email": "yoga.pratama.pangest2u"
 }
 ### DELETE DEVICE
-DELETE http://localhost:3000/device/657bfc7686464d3bcab5bbc8
+DELETE http://localhost:3000/api/v1/device/65fa40ea6ee993de9bfbe138
 
 ### 
-POST http://localhost:3000/location 
+POST http://localhost:3000/api/v1/location 
 Content-Type: application/json
 
 {
-    "deviceId": "657ffb6418c8219214e21588",
+    "deviceToken": "CMoBR9Ne8DLec05SAgVRWfU",
     "latitude": 104.10,
     "longitude": 4.10
 }

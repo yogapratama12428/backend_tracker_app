@@ -49,7 +49,9 @@ model Location {
   longitude Float?
 
   deviceToken String? @db.String
-  device   Device? @relation(fields: [deviceToken], references: [token])
+  device      Device? @relation(fields: [deviceToken], references: [token])
 
   createdAt DateTime @default(now())
+
+  @@index([deviceToken])
 }

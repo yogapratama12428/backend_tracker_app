@@ -11,7 +11,7 @@ import { validationuser } from "../middleware/validationuser.js";
 
 const router = express.Router();
 
-router.get("/api/v1/user", isAdmin, getUser);
+router.get("/api/v1/user", getUser);
 router.get("/api/v1/user/:id", validationuser, getUserById);
 router.post("/api/v1/user", isAdmin, createUser);
 router.put("/api/v1/user/:id", isAdmin, editUser);

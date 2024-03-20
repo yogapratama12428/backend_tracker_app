@@ -6,7 +6,7 @@ const characters =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 function generateString(length) {
-  let result = " ";
+  let result = "";
   const charactersLength = characters.length;
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -32,9 +32,9 @@ export const getDeviceById = async (req, res) => {
       where: {
         id,
       },
-      select: {
-        isLock: true,
-      },
+      include: {
+        locations: true,
+      }
     });
     res.status(200).json(response);
   } catch (error) {
@@ -51,7 +51,7 @@ export const createDevice = async (req, res) => {
         name,
         userId,
         isLock,
-        token: generateString(10),
+        token: generateString(23),
       },
     });
     res.status(201).json(response);
@@ -69,7 +69,7 @@ export const updateTokenDevice = async (req, res) => {
         deviceId,
       },
       data: {
-        token: generateString(10),
+        token: generateString(23),
       },
     });
     res.status(201).json(response);

@@ -1,7 +1,10 @@
-###
+### 
 GET https://backend-tracker-app.vercel.app/user
+
+### GET USER \
+GET http://localhost:3000/api/v1/user
 ### GET USER BY ID 
-GET http://localhost:3000/user/65c1987907d3a8e9838cb648
+GET http://localhost:3000/api/v1/user/65fa31ae6899d83985ddedcf
 
 ### REGISTER USER
 POST http://localhost:3000/api/v1/register
