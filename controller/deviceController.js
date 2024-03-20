@@ -42,6 +42,24 @@ export const getDeviceById = async (req, res) => {
   }
 };
 
+export const getDeviceByEmail = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const response = await prisma.device.findUnique({
+      where: {
+        userId,
+      },
+      include: {
+        locations: true,
+      }
+    });
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(404).json(error);
+  }
+};
+
 export const createDevice = async (req, res) => {
   const { name, isLock, userId } = req.body;
 

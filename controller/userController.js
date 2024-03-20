@@ -65,9 +65,12 @@ export const editUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
   const { id } = req.params;
   try {
-    const response = await prisma.user.deleteMany({
+    const response = await prisma.user.delete({
       where: {
         id,
+      },
+      include: {
+        devices: true,
       },
     });
     res.status(201).json(response);

@@ -1,6 +1,8 @@
 ###
 GET http://localhost:3000/api/v1/device
 
+### GET DEVICE BY USERID
+GET http://localhost:3000/api/v1/mydevice/65fa4a506c2997e0c03af63d
 ### GET DEVICE BY ID 
 GET http://localhost:3000/api/v1/device/65fa41395c7050febf266843
 ###
@@ -8,8 +10,8 @@ POST http://localhost:3000/api/v1/device
 Content-Type: application/json
 
 {
-    "name": "BP 2739 GM",
-    "userId": "65fa40ea6ee993de9bfbe138",
+    "name": "BP 2721 GM",
+    "userId": "65fa4a506c2997e0c03af63d",
     "isLock": true
 }
 ### EDIT DEVICE
@@ -27,9 +29,9 @@ POST http://localhost:3000/api/v1/location
 Content-Type: application/json
 
 {
-    "deviceToken": "CMoBR9Ne8DLec05SAgVRWfU",
-    "latitude": 104.10,
-    "longitude": 4.10
+    "deviceToken": "oU7lo1hq0YptJTEGOIC6dUc",
+    "latitude": 1.06257,
+    "longitude": 104.02858
 }
 
 ###

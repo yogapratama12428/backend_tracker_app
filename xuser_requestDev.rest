@@ -12,7 +12,7 @@ Content-Type: application/json
 
 {
     "email": "yoga.pratama.pangestu@gmail.com",
-    "password": "yoga pratama"
+    "password": "yogapratama"
 }
 
 ### LOGIN USER
@@ -37,4 +37,4 @@ Content-Type: application/json
     "email": "yoga.pratama.pangest2u",
 }
 ### DELETE USER
-DELETE http://localhost:3000/user/657bfb73f75b89b7c4ba5f59
+DELETE http://localhost:3000/api/v1/user/65fa31ae6899d83985ddedcf

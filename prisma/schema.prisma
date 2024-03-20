@@ -39,8 +39,6 @@ model Device {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  @@index([userId])
 }
 
 model Location {
@@ -52,6 +50,4 @@ model Location {
   device      Device? @relation(fields: [deviceToken], references: [token])
 
   createdAt DateTime @default(now())
-
-  @@index([deviceToken])
 }

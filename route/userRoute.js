@@ -15,6 +15,6 @@ router.get("/api/v1/user", getUser);
 router.get("/api/v1/user/:id", validationuser, getUserById);
 router.post("/api/v1/user", isAdmin, createUser);
 router.put("/api/v1/user/:id", isAdmin, editUser);
-router.delete("/api/v1/user/:id", isAdmin, deleteUser);
+router.delete("/api/v1/user/:id", deleteUser);
 
 export default router;
