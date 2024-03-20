@@ -66,7 +66,7 @@ app.set("trust proxy", 1)
 app.use(express.json());
 
 app.use(cors({
-  origin: ["http://localhost:5173", "https://backend-tracker-app.vercel.app"],
+  origin: ["http://localhost:5173", "https://frontend-tracker-app.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
