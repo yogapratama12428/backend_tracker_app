@@ -21,7 +21,7 @@ Content-Type: application/json
 
 {
     "email": "yoga.pratama.pangestu@gmail.com",
-    "password": "yoga pratama"
+    "password": "yogapratama"
 }
 
 ### LOGOUT USER

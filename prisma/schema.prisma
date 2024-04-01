@@ -51,3 +51,5 @@ model Location {
 
   createdAt DateTime @default(now())
 }
+
+
