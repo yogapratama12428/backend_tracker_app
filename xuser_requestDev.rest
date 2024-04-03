@@ -1,5 +1,5 @@
 ### 
-GET https://backend-tracker-app.vercel.app/user
+GET https://backend-tracker-app.vercel.app/v1/user
 
 ### GET USER \
 GET http://localhost:3000/api/v1/user
@@ -11,7 +11,7 @@ POST http://localhost:3000/api/v1/register
 Content-Type: application/json
 
 {
-    "email": "yoga.pratama.pangestu@gmail.com",
+    "email": "yoga.pangestu@gmail.com",
     "password": "yogapratama"
 }
 
